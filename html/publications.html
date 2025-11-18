@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+<title>名村 憲尚 (Norihisa Namura)</title>
+<link rel="stylesheet" href="../style.css">
+<script src="../utils.js"></script>
+</head>
+
+<body>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+includeHTML("#header", "header.html");
+});
+document.addEventListener("DOMContentLoaded", function() {
+includeHTML("#footer", "footer.html");
+});
+</script>
+
+<div id="header"></div>
+
+<main>
+<h1 style="text-align: center;">Publications</h1>
+
+<!-- Preprints -->
+<div id="arXiv">
+<h2> Preprints </h2>
+<script>
+loadBib("../references/arXiv.bib").then(bibtexText => {
+    main(bibtexText, "arXiv")
+});
+</script>
+</div>
+
+<!-- Journal papers -->
+<div id="journal_paper">
+<h2> Journal papers </h2>
+<h3> Peer-reviewed </h3>
+<script>
+loadBib("../references/journal.bib").then(bibtexText => {
+    main(bibtexText, "journal_paper")
+});
+</script>
+</div>
+
+<!-- Conference papers -->
+<div id="conference_paper">
+<h2> Conference papers </h2>
+<h3> Peer-reviewed </h3>
+<script>
+loadBib("../references/conference.bib").then(bibtexText => {
+    main(bibtexText, "conference_paper")
+});
+</script>
+</div>
+</main>
+
+<div id="footer"></div>
+</body>
+</html>

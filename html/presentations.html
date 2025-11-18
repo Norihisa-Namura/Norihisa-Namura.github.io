@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+<title>名村 憲尚 (Norihisa Namura)</title>
+<link rel="stylesheet" href="../style.css">
+<script src="../utils.js"></script>
+</head>
+
+
+<body>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+includeHTML("#header", "header.html");
+});
+document.addEventListener("DOMContentLoaded", function() {
+includeHTML("#footer", "footer.html");
+});
+</script>
+
+<div id="header"></div>
+
+<main>
+<h1 style="text-align: center;">Presentations</h1>
+
+<!-- International_conferences -->
+<div id="international_conference">
+<h2> International conferences </h2>
+<h3> Peer-reviewed </h3>
+<script>
+loadBib("../references/international_conference.bib").then(bibtexText => {
+    main(bibtexText, "international_conference")
+});
+</script>
+</div>
+</main>
+
+<!-- Domestic_workshops -->
+<div id="domestic_workshop">
+<h2> 国内学会発表 (Domestic workshops) </h2>
+<h3> 査読なし </h3>
+<script>
+loadBib("../references/domestic_workshop.bib").then(bibtexText => {
+    main(bibtexText, "domestic_workshop")
+});
+</script>
+</div>
+</main>
+
+<div id="footer"></div>
+</body>
+</html>

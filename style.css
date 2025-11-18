@@ -1,0 +1,63 @@
+html, body {
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+}
+body { font-family: sans-serif; margin: 2em; line-height: 1.5; }
+h1 { color: dodgerblue; font-size: 2.5em; border-bottom: 2px solid #333; margin-bottom: 1em; padding-bottom: 0.3em; }
+h2 { color: dodgerblue; font-size: 1.8em; border-bottom: 1px solid #333; margin-bottom: 1em; padding-bottom: 0.3em; }
+h3 { color: dodgerblue; font-size: 1.3em; border-bottom: 1px solid #333; margin-bottom: 1em; padding-bottom: 0.3em; }
+
+a { color: blueviolet; text-decoration: none; }
+a:hover { color: mediumorchid; }
+
+nav.menu {
+  display: flex; 
+  justify-content: space-between;
+  font-size: 2em; 
+  background-color: royalblue; 
+  color: white;
+  padding: 10px 20px;
+}
+nav.menu a {
+  color: white;
+}
+nav.menu a:hover {
+  color: lightgray;
+}
+nav.menu .right {
+  display: none;
+}
+body.index nav.menu .right {
+  display: inline;
+}
+
+.publication { margin-bottom: 1em; }
+.publication .volume { font-weight: bold; }
+.presentation { margin-bottom: 1em; }
+
+span.month {
+  display: inline-flex;
+  justify-content: space-between;
+  width: 35px;
+}
+span.degree {
+  display: inline-flex;
+  justify-content: space-between;
+  width: 65px;
+}
+
+.figs {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+
+.figs img {
+  height: 300px;
+  width: auto;
+}
+
+footer {
+  font-size: 0.8em; 
+}

@@ -1,10 +1,32 @@
 <!DOCTYPE html>
-<html lang="ja">
+
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>名村 憲尚の研究に関するホームページです．</title>
+<meta charset="UTF-8">
+<title>名村 憲尚 (Norihisa Namura)</title>
+<link rel="stylesheet" href="style.css">
+<script src="utils.js"></script>
 </head>
-<body>
-  <h1>ご訪問ありがとうございます．メンテナンス中です．</h1>
+
+<body class="index">
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+includeHTML("#header", "html/header.html");
+});
+document.addEventListener("DOMContentLoaded", function() {
+includeHTML("#footer", "html/footer.html");
+});
+</script>
+
+<div id="header"></div>
+<script>
+const lang = navigator.language || navigator.userLanguage;
+if(lang.startsWith("ja")){
+    window.location.href = "html/index_jp.html";
+} else {
+    window.location.href = "html/index_en.html";
+}
+</script>
+<div id="footer"></div>
 </body>
 </html>

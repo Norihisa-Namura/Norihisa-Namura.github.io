@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>名村 憲尚 (Norihisa Namura)</title>
+<link rel="stylesheet" href="../style.css">
+<script src="../utils.js"></script>
+</head>
+
+<body class="index">
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+includeHTML("#header", "header.html");
+});
+document.addEventListener("DOMContentLoaded", function() {
+includeHTML("#footer", "footer.html");
+});
+</script>
+
+<div id="header"></div>
+
+<h2>Profile
+<span class="url"><a href=https://drive.google.com/file/d/1z4VzdasX1rwsmAD_hCDjZrjoVhP1b7XE/view?usp=drive_link target="_blank"> [CV]</a></span>
+</h2>
+<div>Name:&nbsp; Norihisa Namura</div>
+<div>Position:&nbsp; JSPS Research Fellow in Department of Systems and Control Engineering, Institute of Science Tokyo (formerly Tokyo Institute of Technology)</div>
+<div>Born:&nbsp; February 10th, 1999 in Tokyo, Japan</div>
+
+<h2>Affiliation</h2>
+<div>
+Nakao Laboratory, Department of Systems and Control Technology, Institute of Science Tokyo (formerly Tokyo Institute of Technology)
+<span class="url"><a href=https://www.k.sc.e.titech.ac.jp target="_blank"> [URL]</a></span>
+</div>
+<div>152-8552, W8-16, 2-12-1 Ookayama, Meguro, Tokyo</div>
+<div>E-mail:&nbsp; namura.n.aa[at]m.titech.ac.jp</div>
+<div>
+<span class="url"><a href=https://orcid.org/0000-0002-3115-2950 target="_blank"> ORCID</a></span> /
+<span class="url"><a href=https://scholar.google.co.jp/citations?user=nANL_zcAAAAJ target="_blank"> Google Scholar</a></span> /
+<span class="url"><a href=https://github.com/Norihisa-Namura target="_blank"> GitHub</a></span>
+</div>
+
+<h2>Education</h2>
+<div>
+<span class="month">Sep.</span> 2022 &ndash; <span class="month">Sep.</span> 2025:&nbsp;
+<span class="degree">D.Eng.,</span>
+Department of Systems and Control Engineering, Institute of Science Tokyo, Japan (Advisor: Prof. 
+<span class="url"><a href=https://sites.google.com/sc.e.titech.ac.jp/hiroya-nakao/ target="_blank"> Hiroya Nakao</a></span>)
+</div>
+<div>
+<span class="month">Sep.</span> 2020 &ndash; <span class="month">Sep.</span> 2022:&nbsp;
+<span class="degree">M.Eng.,</span>
+Department of Systems and Control Engineering, Tokyo Institute of Technology, Japan (Advisor: Prof. Hiroya Nakao)
+</div>
+<div>
+<span class="month">Apr.</span> 2017 &ndash; <span class="month">Sep.</span> 2020:&nbsp;
+<span class="degree">B.Eng.,</span>
+Tokyo Institute of Technology, Japan (Advisor: Prof. Mitsuji Sampei)
+</div>
+
+<h2>Review Service</h2>
+<ul>
+<li>IEEE Transactions on Control Systems Technology</li>
+<li>Springer Nonlinear Dynamics</li>
+<li>IEICE NOLTA</li>
+</ul>
+
+<h2>RA</h2>
+<ol>
+<li>
+<div>
+<span class="month">May</span> 2022 &ndash; <span class="month">Sep.</span> 2025:&nbsp;
+Digital Human Research Team, Artificial Intelligence Research Center, National Institute of Advanced Industrial Science and Technology (AIST), Japan (Advisor: Dr. 
+<span class="url"><a href=https://sites.google.com/view/u4ag2knosr1/profile target="_blank"> Suguru Kanoga</a></span>)
+</div>
+</li>
+<li>
+<div><span class="month">Apr.</span> 2022 &ndash; <span class="month">Mar.</span> 2025:&nbsp; 
+Japan Science and Technology Agency CREST program:</div>
+<div>"Operator theoretic data analysis of computed dynamics and its itegerated utilization with mathematical models"</div>
+</li>
+</ol>
+
+<h2>Teaching Experience</h2>
+<ol>
+<li><span class="month">Apr.</span> 2025 &ndash; <span class="month">Jul.</span> 2025:&nbsp; Data Science and Artificial Intelligence I and II, Teaching Assistant</li>
+<li><span class="month">Apr.</span> 2021 &ndash; <span class="month">Jun.</span> 2021:&nbsp; Engineering Literacy, Teaching Assistant</li>
+</ol>
+<main>
+</main>
+
+<script>
+document.querySelectorAll(".degree").forEach(el => {
+    const text = el.textContent.trim();
+    el.textContent = "";  // 元の文字を消す
+
+    // 必要なら固定幅も data-width から設定
+    const w = el.dataset.width;
+    if (w) el.style.width = w + "px";
+
+    // 1文字ずつ span に包んで入れる
+    for (const ch of text) {
+        const span = document.createElement("span");
+        span.textContent = ch;
+        el.appendChild(span);
+    }
+});
+document.querySelectorAll(".month").forEach(el => {
+    const text = el.textContent.trim();
+    el.textContent = "";  // 元の文字を消す
+
+    // 必要なら固定幅も data-width から設定
+    const w = el.dataset.width;
+    if (w) el.style.width = w + "px";
+
+    // 1文字ずつ span に包んで入れる
+    for (const ch of text) {
+        const span = document.createElement("span");
+        span.textContent = ch;
+        el.appendChild(span);
+    }
+});
+</script>
+
+<div id="footer"></div>
+</body>
+</html>
