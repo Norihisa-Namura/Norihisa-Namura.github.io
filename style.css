@@ -1,6 +1,6 @@
 html, body {
   font-family: "Noto Sans JP", sans-serif;
-  font-size: 18px;
+  font-size: 1.1rem;
   line-height: 1.6;
 }
 body { font-family: sans-serif; margin: 2em; line-height: 1.5; }
@@ -39,12 +39,12 @@ body.index nav.menu .right {
 span.month {
   display: inline-flex;
   justify-content: space-between;
-  width: 35px;
+  width: 2em;
 }
 span.degree {
   display: inline-flex;
   justify-content: space-between;
-  width: 65px;
+  width: 3.5em;
 }
 
 .figs {

@@ -212,13 +212,12 @@ function main(bibtexText, id) {
                 <span class="city">${entry.entryTags.city || ""}, </span>
                 <span class="country">${entry.entryTags.country || ""} </span>
                 <span class="year">(${entry.entryTags.year || ""}.</span>
-                <span class="month">${entry.entryTags.month || ""}). </span>
+                <span>${entry.entryTags.month || ""}). </span>
             `).replace(/\s*\n\s*/g, "");
             ol.appendChild(li);
         });
     }
     else if (id === "domestic_workshop") {
-        /*document.getElementById("domestic_workshop").textContent = JSON.stringify(entries, null, 2);*/
         entries.forEach(entry => {
             const authors = formatAuthorsJP(entry.entryTags.author, entry.entryTags.presenter);
             
@@ -231,7 +230,7 @@ function main(bibtexText, id) {
                 <span class="booktitle">${entry.entryTags.booktitle || ""}，</span>
                 <span class="style">${entry.entryTags.city ? `${entry.entryTags.style}，${entry.entryTags.city} ` : `${entry.entryTags.style} `}</span>
                 <span class="year">(${entry.entryTags.year || ""}.</span>
-                <span class="month">${entry.entryTags.month || ""})．</span>
+                <span>${entry.entryTags.month || ""})．</span>
             `).replace(/\s*\n\s*/g, "");
             ol.appendChild(li);
         });
