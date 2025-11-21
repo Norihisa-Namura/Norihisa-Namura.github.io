@@ -4,9 +4,9 @@ html, body {
   line-height: 1.6;
 }
 body { font-family: sans-serif; margin: 2em; line-height: 1.5; }
-h1 { color: dodgerblue; font-size: 2.5em; border-bottom: 2px solid #333; margin-bottom: 1em; padding-bottom: 0.3em; }
-h2 { color: dodgerblue; font-size: 1.8em; border-bottom: 1px solid #333; margin-bottom: 1em; padding-bottom: 0.3em; }
-h3 { color: dodgerblue; font-size: 1.3em; border-bottom: 1px solid #333; margin-bottom: 1em; padding-bottom: 0.3em; }
+h1 { color: dodgerblue; font-size: 2em; border-bottom: 2px solid #333; margin-bottom: 0.5em; padding-bottom: 0.2em; }
+h2 { color: dodgerblue; font-size: 1.5em; border-bottom: 1px solid #333; margin-bottom: 0.5em; padding-bottom: 0.2em; }
+h3 { color: dodgerblue; font-size: 1.25em; border-bottom: 1px solid #333; margin-bottom: 0.5em; padding-bottom: 0.2em; }
 
 a { color: blueviolet; text-decoration: none; }
 a:hover { color: mediumorchid; }
