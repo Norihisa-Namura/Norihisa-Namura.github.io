@@ -11,19 +11,6 @@ h3 { color: dodgerblue; font-size: 1.3em; border-bottom: 1px solid #333; margin-
 a { color: blueviolet; text-decoration: none; }
 a:hover { color: mediumorchid; }
 
-.grid {
-  display: grid;
-  grid-template-columns: 6em 1.5em 6.5em 1fr; 
-  justify-items: center;
-  gap: 0.3em 0em;
-}
-.grid span {
-  display: inline-block;
-}
-.grid .fr {
-  justify-self: start;
-}
-
 nav.menu {
   display: flex; 
   justify-content: space-between;
@@ -48,22 +35,6 @@ body.index nav.menu .right {
 .publication { margin-bottom: 1em; }
 .publication .volume { font-weight: bold; }
 .presentation { margin-bottom: 1em; }
-
-.item {
-  display: flex;
-  gap: 0.5em;   /* 要素同士の余白 */
-  align-items: flex-start; /* 上揃え */
-}
-span.month {
-  display: flex;
-  justify-content: space-between;
-  width: 2em;
-}
-span.degree {
-  display: inline-flex;
-  justify-content: space-between;
-  width: 3.5em;
-}
 
 .figs {
   display: flex;
