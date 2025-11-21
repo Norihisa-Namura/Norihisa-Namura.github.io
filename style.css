@@ -49,8 +49,13 @@ body.index nav.menu .right {
 .publication .volume { font-weight: bold; }
 .presentation { margin-bottom: 1em; }
 
+.item {
+  display: flex;
+  gap: 0.5em;   /* 要素同士の余白 */
+  align-items: flex-start; /* 上揃え */
+}
 span.month {
-  display: inline-flex;
+  display: flex;
   justify-content: space-between;
   width: 2em;
 }
