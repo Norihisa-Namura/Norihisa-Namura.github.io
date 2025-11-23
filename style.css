@@ -8,6 +8,11 @@ h1 { color: dodgerblue; font-size: 2em; border-bottom: 2px solid #333; margin-bo
 h2 { color: dodgerblue; font-size: 1.5em; border-bottom: 1px solid #333; margin-bottom: 0.5em; padding-bottom: 0.2em; }
 h3 { color: dodgerblue; font-size: 1.25em; border-bottom: 1px solid #333; margin-bottom: 0.5em; padding-bottom: 0.2em; }
 
+li, li p, li div {
+  margin: 0;
+  padding: 0;
+}
+
 a { color: blueviolet; text-decoration: none; }
 a:hover { color: mediumorchid; }
 
