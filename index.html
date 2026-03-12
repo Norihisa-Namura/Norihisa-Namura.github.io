@@ -88,6 +88,18 @@ Japan Science and Technology Agency CREST program:<br>
 </main>
 
 <script>
+if (!localStorage.getItem("lang")) {
+    const lang = navigator.language || navigator.userLanguage;
+    if(lang.startsWith("ja")){
+        localStorage.setItem("lang","jp");
+        window.location.href = "/jp/index_jp.html";
+    } else {
+        localStorage.setItem("lang","en"); 
+    }
+}
+</script>
+
+<script>
 document.querySelectorAll(".degree").forEach(el => {
     const text = el.textContent.trim();
     el.textContent = "";  // 元の文字を消す
@@ -118,13 +130,6 @@ document.querySelectorAll(".month").forEach(el => {
         el.appendChild(span);
     }
 });
-</script>
-
-<script>
-const lang = navigator.language || navigator.userLanguage;
-if(lang.startsWith("ja")){
-    window.location.href = "/jp/index_jp.html";
-}
 </script>
 
 <!--
