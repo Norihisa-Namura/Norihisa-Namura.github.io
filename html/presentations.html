@@ -4,18 +4,18 @@
 <head>
 <meta charset="UTF-8">
 <title>名村 憲尚 (Norihisa Namura)</title>
-<link rel="stylesheet" href="../style.css">
-<script src="../utils.js"></script>
+<link rel="stylesheet" href="/style.css">
+<script src="/utils.js"></script>
 </head>
 
 
 <body>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-includeHTML("#header", "header.html");
+includeHTML("#header", "/html/header.html");
 });
 document.addEventListener("DOMContentLoaded", function() {
-includeHTML("#footer", "footer.html");
+includeHTML("#footer", "/html/footer.html");
 });
 </script>
 
@@ -29,7 +29,7 @@ includeHTML("#footer", "footer.html");
 <h2> International conferences </h2>
 <h3> Peer-reviewed </h3>
 <script>
-loadBib("../references/international_conference.bib").then(bibtexText => {
+loadBib("/references/international_conference.bib").then(bibtexText => {
     main(bibtexText, "international_conference")
 });
 </script>
@@ -41,7 +41,7 @@ loadBib("../references/international_conference.bib").then(bibtexText => {
 <h2> 国内学会発表 (Domestic workshops) </h2>
 <h3> 査読なし </h3>
 <script>
-loadBib("../references/domestic_workshop.bib").then(bibtexText => {
+loadBib("/references/domestic_workshop.bib").then(bibtexText => {
     main(bibtexText, "domestic_workshop")
 });
 </script>

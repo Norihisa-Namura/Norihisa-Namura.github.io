@@ -172,8 +172,8 @@ function main(bibtexText, id) {
                 <span class="number">${entry.entryTags.number ? `(${entry.entryTags.number}), ` : `, `}</span>
                 <span class="pages">${entry.entryTags.pages ? `${pages} ` : ` `}</span>
                 <span class="year">(${entry.entryTags.year || ""}) </span>
-                ${entry.entryTags.url ? `<span class="url"><a href="${entry.entryTags.url}" target="_blank">[Journal]</a> </span>` : " "}
-                ${entry.entryTags.arxiv ? `<span class="url"><a href="${entry.entryTags.arxiv}" target="_blank">[arXiv]</a>.</span>` : "."}
+                ${entry.entryTags.url ? `<span class="url"><a href="${entry.entryTags.url}" target="_blank">[Journal]</a></span>` : ""}
+                ${entry.entryTags.arxiv ? `<span class="url"> <a href="${entry.entryTags.arxiv}" target="_blank">[arXiv]</a>.</span>` : "."}
             `).replace(/\s*\n\s*/g, "");
             ol.appendChild(li);
         });
@@ -192,7 +192,8 @@ function main(bibtexText, id) {
                 <span class="journal">${entry.entryTags.journal || entry.entryTags.booktitle || ""}, </span>
                 <span class="pages">${entry.entryTags.pages ? `${pages} ` : ` `}</span>
                 <span class="year">(${entry.entryTags.year || ""}) </span>
-                ${entry.entryTags.url ? `<span class="url"><a href="${entry.entryTags.url}" target="_blank">[pdf]</a>.</span>` : "."}
+                ${entry.entryTags.url ? `<span class="url"><a href="${entry.entryTags.url}" target="_blank">[pdf]</a></span>` : " "}
+                ${entry.entryTags.arxiv ? `<span class="url"> <a href="${entry.entryTags.arxiv}" target="_blank">[arXiv]</a>.</span>` : "."}
             `).replace(/\s*\n\s*/g, "");
             ol.appendChild(li);
         });

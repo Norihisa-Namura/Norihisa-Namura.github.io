@@ -4,17 +4,17 @@
 <head>
 <meta charset="UTF-8">
 <title>名村 憲尚 (Norihisa Namura)</title>
-<link rel="stylesheet" href="../style.css">
-<script src="../utils.js"></script>
+<link rel="stylesheet" href="/style.css">
+<script src="/utils.js"></script>
 </head>
 
 <body>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-includeHTML("#header", "header.html");
+includeHTML("#header", "/html/header.html");
 });
 document.addEventListener("DOMContentLoaded", function() {
-includeHTML("#footer", "footer.html");
+includeHTML("#footer", "/html/footer.html");
 });
 </script>
 
@@ -27,7 +27,7 @@ includeHTML("#footer", "footer.html");
 <div id="arXiv">
 <h2> Preprints </h2>
 <script>
-loadBib("../references/arXiv.bib").then(bibtexText => {
+loadBib("/references/arXiv.bib").then(bibtexText => {
     main(bibtexText, "arXiv")
 });
 </script>
@@ -38,7 +38,7 @@ loadBib("../references/arXiv.bib").then(bibtexText => {
 <h2> Journal papers </h2>
 <h3> Peer-reviewed </h3>
 <script>
-loadBib("../references/journal.bib").then(bibtexText => {
+loadBib("/references/journal.bib").then(bibtexText => {
     main(bibtexText, "journal_paper")
 });
 </script>
@@ -49,7 +49,7 @@ loadBib("../references/journal.bib").then(bibtexText => {
 <h2> Conference papers </h2>
 <h3> Peer-reviewed </h3>
 <script>
-loadBib("../references/conference.bib").then(bibtexText => {
+loadBib("/references/conference.bib").then(bibtexText => {
     main(bibtexText, "conference_paper")
 });
 </script>
