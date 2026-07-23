@@ -34,23 +34,23 @@ loadBib("/references/arXiv.bib").then(bibtexText => {
 </div>
 
 <!-- Journal papers -->
-<div id="journal_paper">
+<div id="journal_papers">
 <h2> Journal papers </h2>
-<h3> Peer-reviewed </h3>
+<h3> Refereed </h3>
 <script>
-loadBib("/references/journal.bib").then(bibtexText => {
-    main(bibtexText, "journal_paper")
+loadBib("/references/journal_papers.bib").then(bibtexText => {
+    main(bibtexText, "journal_papers")
 });
 </script>
 </div>
 
 <!-- Conference papers -->
-<div id="conference_paper">
+<div id="conference_papers">
 <h2> Conference papers </h2>
-<h3> Peer-reviewed </h3>
+<h3> Refereed </h3>
 <script>
-loadBib("/references/conference.bib").then(bibtexText => {
-    main(bibtexText, "conference_paper")
+loadBib("/references/conference_papers.bib").then(bibtexText => {
+    main(bibtexText, "conference_papers")
 });
 </script>
 </div>

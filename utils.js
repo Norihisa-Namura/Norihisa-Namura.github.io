@@ -14,7 +14,7 @@ const myLastNameJP = "名村";
 async function loadBib(file) {
     const response = await fetch(file);
     bibtexText = await response.text();
-    bibtexText = bibtexText.replace(/\n/g, '<br>');
+    bibtexText = bibtexText.replace(/\n/g, "<br>");
     return bibtexText;
 }
 
@@ -43,11 +43,11 @@ function toInitials(fullName) {
     let first = "";
     let last = "";
 
-    if (fullName.includes(',')) {
-        [last, first] = fullName.split(',').map(s => s.trim());
+    if (fullName.includes(",")) {
+        [last, first] = fullName.split(",").map(s => s.trim());
     } else {
         const parts = fullName.trim().split(/\s+/);
-        first = parts.slice(0, -1).join(' ');
+        first = parts.slice(0, -1).join(" ");
         last = parts[parts.length - 1];
     }
     return `${first[0]}. ${last}`;
@@ -57,29 +57,25 @@ function eliminateSpace(fullName) {
     let first = "";
     let last = "";
 
-    if (fullName.includes(' ')) {
-        [last, first] = fullName.split(' ').map(s => s.trim());
+    if (fullName.includes(" ")) {
+        [last, first] = fullName.split(" ").map(s => s.trim());
         return `${last}${first}`;
     } else {
         return fullName;
     }
 }
 
-function formatMyName(name) {
-    name.includes(myFirstName) || name.includes(myLastName)
-    ? `<strong><u>${formatted}</u></strong>`
-    : formatted;
-}
-
 function formatAuthors(authorStr, presenter=-1) {
     const names = authorStr.split(" and ").map((name, index) => {
         let formatted = toInitials(name);
+        if (name.includes(myLastName)) {
+            formatted = `<strong><u>${formatted}</u></strong>`;
+        }
         if (index === presenter - 1) {
             formatted = formatted + "*";
         }
-        return name.includes(myLastName)
-        ? `<strong><u>${formatted}</u></strong>`
-        : formatted;
+
+        return formatted;
     });
 
     if (names.length === 1) {
@@ -94,18 +90,39 @@ function formatAuthors(authorStr, presenter=-1) {
 function formatAuthorsJP(authorStr, presenter=-1) {
     const names = authorStr.split(" and ").map((name, index) => {
         let formatted = eliminateSpace(name);
+        if (name.includes(myFirstNameJP) || name.includes(myLastNameJP)) {
+            formatted = `<strong><u>${formatted}</u></strong>`;
+        }
         if (index === presenter - 1) {
             formatted = formatted + "*";
         }
-        return name.includes(myFirstNameJP) || name.includes(myLastNameJP)
-        ? `<strong><u>${formatted}</u></strong>`
-        : formatted;
+
+        return formatted;
     });
 
     if (names.length === 1) {
         return names[0];
     }
     return `${names.join("，")}`;
+}
+
+function endash(word) {
+    let former = "";
+    let latter = "";
+
+    if (word.includes("--")) {
+        [former, latter] = word.split("--").map(s => s.trim());
+        word = `${former}&ndash;${latter}`
+    }
+    return word;
+}
+
+function formatTitle(titleStr) {
+    const words = titleStr.split(" ").map((word) => {
+        word = endash(word)
+        return word;
+    });
+    return words.join(" ")
 }
 
 function formatPages(pageStr) {
@@ -119,6 +136,48 @@ function formatPages(pageStr) {
     };
 }
 
+function formatMonth(monthStr) {
+    const monthStrLow = monthStr.trim().toLowerCase();
+
+    if (monthStrLow.startsWith("jan")) {
+        monthStr = "01";
+    }
+    else if (monthStrLow.startsWith("feb")) {
+        monthStr = "02";
+    }
+    else if (monthStrLow.startsWith("mar")) {
+        monthStr = "03";
+    }
+    else if (monthStrLow.startsWith("apr")) {
+        monthStr = "04";
+    }
+    else if (monthStrLow.startsWith("may")) {
+        monthStr = "05";
+    }
+    else if (monthStrLow.startsWith("jun")) {
+        monthStr = "06";
+    }
+    else if (monthStrLow.startsWith("jul")) {
+        monthStr = "07";
+    }
+    else if (monthStrLow.startsWith("aug")) {
+        monthStr = "08";
+    }
+    else if (monthStrLow.startsWith("sep")) {
+        monthStr = "09";
+    }
+    else if (monthStrLow.startsWith("oct")) {
+        monthStr = "10";
+    }
+    else if (monthStrLow.startsWith("nov")) {
+        monthStr = "11";
+    }
+    else if (monthStrLow.startsWith("dec")) {
+        monthStr = "12";
+    }
+    return monthStr;
+}
+
 function main(bibtexText, id) {
     const entries = bibtexParse(bibtexText);
     const container = document.getElementById(id);
@@ -127,24 +186,33 @@ function main(bibtexText, id) {
     container.appendChild(ol);
 
     if (id === "arXiv") {
-        entries.forEach(entry => {
-            const authors = formatAuthors(entry.entryTags.author);
-            
-            const li = document.createElement("li");
-            li.className = "publication";
-            li.innerHTML = `
-                <div class="author">${authors || ""},</div>
-                <div class="title">&ldquo;${entry.entryTags.title || ""},&rdquo;</div>
-                <span class="journal">${entry.entryTags.journal || entry.entryTags.booktitle || ""} </span>
-                <span class="year">(${entry.entryTags.year || ""})</span>
-                ${entry.entryTags.url ? `<span class="url"><a href="${entry.entryTags.url}" target="_blank"> [pdf]</a>.</span>` : " ."}
-            `.replace(/\s*\n\s*/g, "");
-            ol.appendChild(li);
-        });
+        if (entries.length === 0) {
+            const p = document.createElement("p");
+            p.innerHTML = "&emsp;None.";
+            ol.replaceWith(p);
+        }
+        else {
+            entries.forEach(entry => {
+                const authors = formatAuthors(entry.entryTags.author);
+                const title = formatTitle(entry.entryTags.title);
+                
+                const li = document.createElement("li");
+                li.className = "publication";
+                li.innerHTML = `
+                    <div class="author">${authors || ""},</div>
+                    <div class="title">&ldquo;${title || ""},&rdquo;</div>
+                    <span class="journal">${entry.entryTags.journal || entry.entryTags.booktitle || ""} </span>
+                    <span class="year">(${entry.entryTags.year || ""})</span>
+                    ${entry.entryTags.url ? `<span class="url"><a href="${entry.entryTags.url}" target="_blank"> [pdf]</a>.</span>` : " ."}
+                `.replace(/\s*\n\s*/g, "");
+                ol.appendChild(li);
+            });
+        };
     }
-    else if (id === "journal_paper") {
+    else if (id === "journal_papers") {
         entries.forEach(entry => {
             const authors = formatAuthors(entry.entryTags.author);
+            const title = formatTitle(entry.entryTags.title);
             const pages = formatPages(entry.entryTags.pages);
             
             const li = document.createElement("li");
@@ -166,7 +234,7 @@ function main(bibtexText, id) {
 
             li.innerHTML = (`
                 <div class="author">${authors || ""},</div>
-                <div class="title">&ldquo;${entry.entryTags.title || ""},&rdquo;</div>
+                <div class="title">&ldquo;${title || ""},&rdquo;</div>
                 <span class="journal">${entry.entryTags.journal || entry.entryTags.booktitle || ""} </span>
                 <span class="volume">${entry.entryTags.volume || ""}</span>
                 <span class="number">${entry.entryTags.number ? `(${entry.entryTags.number}), ` : `, `}</span>
@@ -178,9 +246,10 @@ function main(bibtexText, id) {
             ol.appendChild(li);
         });
     }
-    else if (id === "conference_paper") {
+    else if (id === "conference_papers") {
         entries.forEach(entry => {
             const authors = formatAuthors(entry.entryTags.author);
+            const title = formatTitle(entry.entryTags.title);
             const pages = formatPages(entry.entryTags.pages);
             
             const li = document.createElement("li");
@@ -188,7 +257,7 @@ function main(bibtexText, id) {
 
             li.innerHTML = (`
                 <div class="author">${authors || ""},</div>
-                <div class="title">&ldquo;${entry.entryTags.title || ""},&rdquo;</div>
+                <div class="title">&ldquo;${title || ""},&rdquo;</div>
                 <span class="journal">${entry.entryTags.journal || entry.entryTags.booktitle || ""}, </span>
                 <span class="pages">${entry.entryTags.pages ? `${pages} ` : ` `}</span>
                 <span class="year">(${entry.entryTags.year || ""}) </span>
@@ -201,24 +270,47 @@ function main(bibtexText, id) {
     else if (id === "international_conference") {
         entries.forEach(entry => {
             const authors = formatAuthors(entry.entryTags.author, entry.entryTags.presenter);
+            const title = formatTitle(entry.entryTags.title);
+            const month = formatMonth(entry.entryTags.month);
             
             const li = document.createElement("li");
             li.className = "presentation";
 
             li.innerHTML = (`
                 <div class="author">${authors || ""},</div>
-                <div class="title">&ldquo;${entry.entryTags.title || ""},&rdquo;</div>
+                <div class="title">&ldquo;${title || ""},&rdquo;</div>
                 <span class="booktitle">${entry.entryTags.booktitle || ""}, </span>
                 <span class="style">${entry.entryTags.style || ""}, </span>
                 <span class="city">${entry.entryTags.city || ""}, </span>
                 <span class="country">${entry.entryTags.country || ""} </span>
                 <span class="year">(${entry.entryTags.year || ""}.</span>
-                <span>${entry.entryTags.month || ""}). </span>
+                <span class="month">${month || ""}). </span>
             `).replace(/\s*\n\s*/g, "");
             ol.appendChild(li);
         });
     }
-    else if (id === "domestic_workshop") {
+    else if (id === "international_workshop") {
+        entries.forEach(entry => {
+            const authors = formatAuthors(entry.entryTags.author, entry.entryTags.presenter);
+            const title = formatTitle(entry.entryTags.title);
+            const month = formatMonth(entry.entryTags.month);
+            
+            const li = document.createElement("li");
+            li.className = "presentation";
+
+            li.innerHTML = (`
+                <div class="author">${authors || ""},</div>
+                <div class="title">&ldquo;${title || ""},&rdquo;</div>
+                <span class="booktitle">${entry.entryTags.booktitle || ""}, </span>
+                <span class="city">${entry.entryTags.city || ""}, </span>
+                <span class="country">${entry.entryTags.country || ""} </span>
+                <span class="year">(${entry.entryTags.year || ""}.</span>
+                <span" class="month">${month || ""}). </span>
+            `).replace(/\s*\n\s*/g, "");
+            ol.appendChild(li);
+        });
+    }
+    else if (id === "domestic_workshops") {
         entries.forEach(entry => {
             const authors = formatAuthorsJP(entry.entryTags.author, entry.entryTags.presenter);
             
@@ -231,7 +323,7 @@ function main(bibtexText, id) {
                 <span class="booktitle">${entry.entryTags.booktitle || ""}，</span>
                 <span class="style">${entry.entryTags.city ? `${entry.entryTags.style}，${entry.entryTags.city} ` : `${entry.entryTags.style} `}</span>
                 <span class="year">(${entry.entryTags.year || ""}.</span>
-                <span>${entry.entryTags.month || ""})．</span>
+                <span class="month">${entry.entryTags.month || ""})．</span>
             `).replace(/\s*\n\s*/g, "");
             ol.appendChild(li);
         });

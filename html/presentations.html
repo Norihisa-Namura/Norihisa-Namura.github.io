@@ -21,32 +21,37 @@ includeHTML("#footer", "/html/footer.html");
 
 <div id="header"></div>
 
-<main>
 <h1 style="text-align: center;">Presentations</h1>
 
 <!-- International_conferences -->
-<div id="international_conference">
+<div>
 <h2> International conferences </h2>
-<h3> Peer-reviewed </h3>
+<h3> Refereed </h3>
+<div id="international_conference"></div>
 <script>
 loadBib("/references/international_conference.bib").then(bibtexText => {
     main(bibtexText, "international_conference")
 });
 </script>
-</div>
-</main>
-
-<!-- Domestic_workshops -->
-<div id="domestic_workshop">
-<h2> 国内学会発表 (Domestic workshops) </h2>
-<h3> 査読なし </h3>
+<h3> Workshop </h3>
+<div id="international_workshop"></div>
 <script>
-loadBib("/references/domestic_workshop.bib").then(bibtexText => {
-    main(bibtexText, "domestic_workshop")
+loadBib("/references/international_workshop.bib").then(bibtexText => {
+    main(bibtexText, "international_workshop")
 });
 </script>
 </div>
-</main>
+
+<!-- Domestic_workshops -->
+<div id="domestic_workshops">
+<h2> 国内学会発表 (Domestic workshops) </h2>
+<h3> 査読なし </h3>
+<script>
+loadBib("/references/domestic_workshops.bib").then(bibtexText => {
+    main(bibtexText, "domestic_workshops")
+});
+</script>
+</div>
 
 <div id="footer"></div>
 </body>
